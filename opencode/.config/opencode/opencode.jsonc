@@ -10,18 +10,28 @@
   "keybinds": {
     "input_newline": "ctrl+n",
   },
-  "provider": {
-    "minimax": {
-      "npm": "@ai-sdk/anthropic",
-      "options": {
-        "baseURL": "https://api.minimax.io/anthropic/v1",
+  "mcp": {
+    "zai-mcp-server": {
+      "type": "local",
+      "command": ["npx", "-y", "@z_ai/mcp-server"],
+      "environment": {
+        "Z_AI_API_KEY": "env:{Z_AI_API_KEY}",
+        "Z_AI_MODE": "ZAI",
       },
-      "models": {
-        "MiniMax-M2": {
-          "name": "MiniMax-M2",
-        },
+    },
+    "web-search-prime": {
+      "type": "remote",
+      "url": "https://api.z.ai/api/mcp/web_search_prime/mcp",
+      "headers": {
+        "Authorization": "Bearer env:{Z_AI_API_KEY}",
+      },
+    },
+    "web-reader": {
+      "type": "remote",
+      "url": "https://api.z.ai/api/mcp/web_reader/mcp",
+      "headers": {
+        "Authorization": "Bearer env:{Z_AI_API_KEY}",
       },
     },
   },
-  "mcp": {},
 }
